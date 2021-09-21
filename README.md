@@ -4,7 +4,9 @@ CLONE THE REPO THROUGH THE COMMAND PALATTE
 
 TO MAKE CHANGES PERFORM 
 1 git add .
+
 2 git commit -m "CHANGE YOU HAVE MADE"
+
 3 git push origin master
 
 In the terminal
