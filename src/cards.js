@@ -34,17 +34,17 @@ function Deck() {
         return deck;
     }
     
-    function shuffle(){
-        for (var i = 0; i < 1000; i++)
-        {
-            var location1 = Math.floor((Math.random() * deck.length));
-            var location2 = Math.floor((Math.random() * deck.length));
-            var tmp = deck[location1];
+    // function shuffle(){
+    //     for (var i = 0; i < 1000; i++)
+    //     {
+    //         var location1 = Math.floor((Math.random() * deck.length));
+    //         var location2 = Math.floor((Math.random() * deck.length));
+    //         var tmp = deck[location1];
     
-            deck[location1] = deck[location2];
-            deck[location2] = tmp;
-        }
-    }
+    //         deck[location1] = deck[location2];
+    //         deck[location2] = tmp;
+    //     }
+    // }
     
     function aligncards(){
         let cards = document.getElementsByClassName("card");
@@ -78,7 +78,7 @@ function Deck() {
     
             $(card).css("bottom", bottom + "px");
             $(card).css("transform", "rotate(" + rot + "deg)");
-        });
+        }());
     }
     
     function addcards(count){
@@ -101,8 +101,9 @@ function Deck() {
     function getrandomcard(){
         let card = deck[0];
         deck = deck.slice(1);
+        console.log(card);
         let markup = cardmarkup;
-        markup += `<span class="value">${card.Value}</span></div>`;
+        markup += `<span class="value">${"card.Value"}</span></div>`;
         return markup;
     }
     
