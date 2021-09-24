@@ -1,13 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-import Deck from './cards';
+import Deck from "./Deck";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Deck/>
+    <div>
+      <Deck />
     </div>
   );
-}
+};
 
 export default App;

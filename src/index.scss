@@ -1,4 +1,4 @@
-$cardmult: 80;
+$cardmult: 60;
 *{
     padding: 0;
     margin: 0;
@@ -32,12 +32,16 @@ body{
         transition:0.5s;
       margin-bottom: 30px;
     }
+    &:active{
+        transition:0.5s;
+        margin-bottom:100px;
+    }
     > span{
         display: block;
     }
     .value{
         font-weight: bolder;
-        font-size: 30px;
+        font-size: 20px;
         margin: 5px;
     }
 }
