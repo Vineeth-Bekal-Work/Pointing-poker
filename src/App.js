@@ -1,13 +1,11 @@
+import Deck from "./Deck";
 
-import './App.css';
-import Deck from './cards';
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Deck/>
+    <div>
+      <Deck />
     </div>
   );
-}
+};
 
 export default App;
