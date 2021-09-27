@@ -1,4 +1,5 @@
 $cardmult: 80;
+$placedmult: 50;
 *{
     padding: 0;
     margin: 0;
@@ -35,6 +36,31 @@ body{
     > span{
         display: block;
     }
+    .value{
+        font-weight: bolder;
+        font-size: 30px;
+        margin: 5px;
+    }
+}
+.theTable{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.placedcard{
+    width: 2.5px * $placedmult;
+    height: 3.5px * $placedmult;
+    margin-bottom: 30px;
+    position: relative;
+    display: block;
+    bottom: -100px;
+    left: calc(50% - 2.5px * $placedmult);
+    background-color: white;
+    box-shadow: 0px 0px 8px 1px rgba($color: #000000, $alpha: 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    transition: 0.5s left ease, 0.5s bottom ease;
+    user-select: none;
     .value{
         font-weight: bolder;
         font-size: 30px;

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
-
+import Table from "./Table";
+import io from 'socket.io-client';
+const socket = io.connect("http://localhost:3001");
+var chooseTime=0;
 const cardValues = [
   "0",
   "0.5",
@@ -20,10 +23,22 @@ const Deck = () => {
   // Cards currently in the hand
   const [hand, setHand] = useState([]);
   const [placed,setPlaced]= useState([]);
-
+  const [prevlist,setPrevlist]=useState([]);
+  const [numberofuser,setNumberofuser]=useState(null);
   useEffect(() => {
     addCards();
+    chooseTime=0;
   }, []);
+  useEffect(()=>{
+    socket.on("selected",(data)=>{
+        setPrevlist((values)=>[...values,data]);
+        console.log(prevlist)
+    })
+    socket.on("playerdet",(data)=>{
+      setNumberofuser(data);
+      console.log(numberofuser);
+  })
+  },[socket])
 
   const addCards = () => {
     let count = cardValues.length;
@@ -39,6 +54,7 @@ const Deck = () => {
   const removeCard = (value) => {
     setHand((prevValues) => prevValues.filter((e) => e !== value));
     setPlaced(value);
+    chooseTime=1;
   };
 
   const getCardStyle = (index) => {
@@ -121,8 +137,9 @@ const Deck = () => {
   return (
     <div className="deck">
       <div id="hand">
+        <p>{numberofuser}</p>
         <p>{placed}</p>
-        {hand.length !== 0 ? (
+        {chooseTime !== 1 ? (
           hand.map((value, index) => (
             <Card
               key={value}
@@ -132,7 +149,12 @@ const Deck = () => {
             />
           ))
         ) : (
-          <p>Your hand is empty</p>
+          <Table
+          value={placed}
+          socket={socket}
+          prevlist={prevlist}
+          usersnum={numberofuser}
+          />
         )}
       </div>
     </div>
