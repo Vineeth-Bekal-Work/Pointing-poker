@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "homepage": "https://Vineeth-Bekal-Work.github.io/Pointing-poker.git",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.13",
+    "socket.io": "^4.2.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
