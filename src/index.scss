@@ -1,0 +1,43 @@
+$cardmult: 80;
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+  overflow:hidden;
+}
+#hand{
+    width: 60%;
+    position: absolute;
+    height: 5px * $cardmult;
+    display: block;
+    left: 20%;
+    top: 10%;
+    //border: 1px solid black;
+}
+.card{
+    width: 2.5px * $cardmult;
+    height: 3.5px * $cardmult;
+    position: absolute;
+    display: block;
+    bottom: -100px;
+    left: calc(50% - 2.5px * $cardmult);
+    background-color: white;
+    box-shadow: 0px 0px 8px 1px rgba($color: #000000, $alpha: 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    transition: 0.5s left ease, 0.5s bottom ease;
+    user-select: none;
+    &:hover{
+        transition:0.5s;
+      margin-bottom: 30px;
+    }
+    > span{
+        display: block;
+    }
+    .value{
+        font-weight: bolder;
+        font-size: 30px;
+        margin: 5px;
+    }
+}
