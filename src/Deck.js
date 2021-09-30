@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Table from "./Table";
 import io from 'socket.io-client';
+import queryString from 'query-string';
+import InfoBar from './Infobar';
+import Input from './Input';
+import Messages from './Messages';
+import { Redirect} from 'react-router-dom';
 const socket = io.connect("http://localhost:3001");
 var chooseTime=0;
 const cardValues = [
@@ -19,27 +24,52 @@ const cardValues = [
   "?",
 ].reverse();
 
-const Deck = () => {
+const Deck = ({location}) => {
   // Cards currently in the hand
   const [hand, setHand] = useState([]);
+  const [selected,setSelected] = useState('');
   const [placed,setPlaced]= useState([]);
-  const [prevlist,setPrevlist]=useState([]);
+  const [name, setName] = useState('');
+  const [room, setRoom] = useState('');
   const [numberofuser,setNumberofuser]=useState(null);
+  const [flag,setFlag]=useState(0);
+  const [message, setMessage] = useState('');
+   const [messages, setMessages] = useState([]);
+   const[backerror,setBackerror] = useState('0');
   useEffect(() => {
     addCards();
-    chooseTime=0;
   }, []);
+  useEffect ( () => {
+    const {name , room} = queryString.parse(location.search);
+    setName(name);
+    setRoom(room);
+    socket.emit('join', { name, room },(error)=>{
+      if(error){
+        alert(error);
+        setBackerror('1');
+      }
+    });
+
+}, [socket, location.search]);
   useEffect(()=>{
-    socket.on("selected",(data)=>{
-        setPrevlist((values)=>[...values,data]);
-        console.log(prevlist)
-    })
     socket.on("playerdet",(data)=>{
       setNumberofuser(data);
       console.log(numberofuser);
   })
+  socket.on("preach",(data)=>{
+    if(data == 'reset'){
+      setFlag(0);
+      addCards();
+    }
+})
+socket.on("selected",(data)=>{
+  setSelected(data);
+});
   },[socket])
-
+  const goback =() =>{
+    console.log(chooseTime);
+    socket.emit("preach",'reset')
+  }
   const addCards = () => {
     let count = cardValues.length;
     setHand([cardValues[count - 1]]);
@@ -50,11 +80,26 @@ const Deck = () => {
       setHand((prevValues) => [...prevValues, cardValues[count - 1]]);
     }, 100);
   };
+  useEffect(() => {
+    socket.on('message', message => {
+     setMessages([...messages, message]);
+    }) 
+ },[messages])
+
+ const sendMessage= (event) =>{
+     event.preventDefault();
+
+     if(message)
+     {
+         socket.emit('sendMessage', message, ()=> setMessage(''));
+     }
+     
+ }
 
   const removeCard = (value) => {
     setHand((prevValues) => prevValues.filter((e) => e !== value));
     setPlaced(value);
-    chooseTime=1;
+    setFlag(1);
   };
 
   const getCardStyle = (index) => {
@@ -133,13 +178,23 @@ const Deck = () => {
     let ypos = a * Math.pow(xpos - h, 2) + k;
     return ypos;
   };
+  if(backerror=='1'){
+    console.log(backerror);
+    return(
+      <Redirect to="/" />
+    )
+  }
 
   return (
     <div className="deck">
       <div id="hand">
-        <p>{numberofuser}</p>
-        <p>{placed}</p>
-        {chooseTime !== 1 ? (
+      <div className="container">
+           <InfoBar room={room} />    
+           <Messages messages={messages} name={name}/>
+          <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
+          </div>
+        <p>the one is {selected}</p>
+        {flag !== 1 ? (
           hand.map((value, index) => (
             <Card
               key={value}
@@ -152,8 +207,8 @@ const Deck = () => {
           <Table
           value={placed}
           socket={socket}
-          prevlist={prevlist}
           usersnum={numberofuser}
+          goback = {goback}
           />
         )}
       </div>

@@ -2,8 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const { Server } = require('socket.io');
 const app = express();
+var roomUser=[];
 app.use(cors());
-var users=[];
+const {addUser, removeUser, getUser, getUsersInRoom, addWorth, reset} = require('./users.js');
 const server = app.listen(3001,()=>
 {
     console.log("server odindu");
@@ -15,19 +16,44 @@ const io = new Server(server,{
     },
 });
 io.on("connection",function(socket){
-    users.push(socket.id);
+    socket.on('join', ({ name, room },callback) =>{
+    const {error,user} = addUser({ id: socket.id, name, room });
+    if(error) return callback(error);
     console.log(socket.id);
-    console.log(users);
-    io.sockets.emit("playerdet",users.length);
+    console.log(user);
+    socket.join(room);
+    });
     socket.on('disconnect',()=>
     {
-       users= users.filter((e)=> e!==socket.id);
+        removeUser(socket.id);
         console.log("user disconnected",socket.id);
-        console.log(users);
-        io.sockets.emit("playerdet",users.length);
+        console.log(roomUser);
+        io.sockets.emit("playerdet",roomUser.length);
+    });
+    socket.on('sendMessage', (message, callback) => {
+        const user = getUser(socket.id);
+
+        io.to(user.room).emit('message', { user: user.name, text: message });
+
+        callback();
     });
     socket.on("selected",function(data){
+        addWorth(socket.id,data);
         console.log("the thing is "+data);
-        io.sockets.emit("selected",data);
+        const user = getUser(socket.id);
+        roomUser = getUsersInRoom(user.room);
+        console.log(roomUser);
+        io.in(user.room).emit("selected",data);
+        io.in(user.room).emit("preach",roomUser);
+    })
+    socket.on("preach",function(data){
+        if(data =='reset'){
+            const user = getUser(socket.id);
+            reset(user.room)
+            roomUser = getUsersInRoom(user.room);
+            console.log(roomUser);
+            io.in(user.room).emit("preach",'reset');
+            io.in(user.room).emit("preach",roomUser);
+        }
     })
 });

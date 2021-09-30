@@ -1,27 +1,40 @@
 import React, {useState, useEffect} from "react";
 import Placedcard from "./Placedcard";
+import Result from "./Result";
+import Backcard from "./backcard";
 const Table = (props) =>{
     const socket = props.socket;
-    const[valuelist,setValuelist]=useState(props.prevlist);
+    const[valuelist,setValuelist]=useState([]);
     useEffect(()=>{
         socket.emit("selected",props.value)
       },[]);
       useEffect(()=>{
-        socket.on("selected",(data)=>{
+        socket.on("preach",(data)=>{
+          if(data !=='reset'){
             console.log(data)
-            setValuelist((values)=>[...values,data]);
+            setValuelist(data.map((value)=>value.worth));
+            console.log(valuelist)
+          }
         })
       },[socket])
     return(
         <div className="theTable">
+          <div className="cardplaced">
                       {valuelist.map((value,index)=>
-                        (
-                            <Placedcard
-                            key={index}
-                            value={value}
-                            />
-                        ))
-                        }
+                        value !== 'waiting' ? (
+                          <Placedcard
+                          key={index}
+                          value={value}
+                          />
+                      ) : (
+                        <Backcard/>
+                      ))}
+                      </div>
+                      {valuelist.indexOf("waiting")<0 ? (
+                          <Result
+                          valuelist = {valuelist}
+                          goback = {props.goback}/>
+                      ):(<p></p>)}
 
         </div>
     )

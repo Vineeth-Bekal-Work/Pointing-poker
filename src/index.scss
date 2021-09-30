@@ -1,5 +1,5 @@
 $cardmult: 80;
-$placedmult: 50;
+$placedmult: 60;
 *{
     padding: 0;
     margin: 0;
@@ -44,8 +44,7 @@ body{
 }
 .theTable{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
 }
 .placedcard{
     width: 2.5px * $placedmult;
@@ -66,4 +65,37 @@ body{
         font-size: 30px;
         margin: 5px;
     }
+}
+.backcard{
+    width: 2.5px * $placedmult;
+    height: 3.5px * $placedmult;
+    margin-bottom: 30px;
+    position: relative;
+    display: block;
+    bottom: -100px;
+    left: calc(50% - 2.5px * $placedmult);
+    background-image:url(poseidon.jpg);
+    background-size: cover;
+    box-shadow: 7px 6px 8px 2px rgba($color: #000000, $alpha: 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    transition: 0.5s left ease, 0.5s bottom ease;
+    user-select: none;
+    .value{
+        font-weight: bolder;
+        font-size: 30px;
+        margin: 5px;
+    }
+}
+.loading{
+    display: flex;
+    align-items: flex-end;
+}
+.cardplaced{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.result{
+    padding-top:20%;
 }
