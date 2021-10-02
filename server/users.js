@@ -31,6 +31,7 @@ const reset = (room) =>{
             e.worth = "waiting"}
         });
 }
+
 const getUser = (id) => users.find((user) => user.id === id);
 
 const getUsersInRoom = (room) => users.filter((user) => user.room === room);

@@ -5,10 +5,12 @@ const app = express();
 var roomUser=[];
 app.use(cors());
 const {addUser, removeUser, getUser, getUsersInRoom, addWorth, reset} = require('./users.js');
+
 const server = app.listen(3001,()=>
 {
     console.log("server odindu");
 })
+
 const io = new Server(server,{
     cors: {
         origin: "http://localhost:3000",

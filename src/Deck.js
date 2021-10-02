@@ -186,14 +186,19 @@ socket.on("selected",(data)=>{
   }
 
   return (
-    <div className="deck">
-      <div id="hand">
-      <div className="container">
+    <>
+    <div className="container" style={{backgroundColor: "#c8f1c8", margin: "0", position: "absolute" ,paddingLeft: "20px", top: "20px", width: "20%"}} >
            <InfoBar room={room} />    
            <Messages messages={messages} name={name}/>
           <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
-          </div>
-        <p>the one is {selected}</p>
+      </div>
+      <div id="hand" style={{backgroundColor: "none", margin: "250px 0", padding: "0"}} >
+      {/* <div className="container" >
+           <InfoBar room={room} />    
+           <Messages messages={messages} name={name}/>
+          <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
+      </div> */}
+        <p style={{backgroundColor: "none", margin: "350px 0", padding: "0"}} >the one is {selected}</p>
         {flag !== 1 ? (
           hand.map((value, index) => (
             <Card
@@ -212,7 +217,24 @@ socket.on("selected",(data)=>{
           />
         )}
       </div>
-    </div>
+     </>
+    // <div id="hand" 
+    //   style={{backgroundColor: "none", margin: "250px 0", padding: "0"}} 
+    //   >
+    //     <p>{placed}</p>
+    //     {hand.length !== 0 ? (
+    //       hand.map((value, index) => (
+    //         <Card
+    //           key={value}
+    //           cardStyle={getCardStyle(index)}
+    //           value={value}
+    //           onClick={() => removeCard(value)}
+    //         />
+    //       ))
+    //     ) : (
+    //       <p>Your hand is empty</p>
+    //     )}
+    //   </div>
   );
 };
 

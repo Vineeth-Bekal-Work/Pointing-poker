@@ -1,12 +1,16 @@
 import Deck from "./Deck";
 import React from "react";
 import Join from "./Join"
+import Story from "./Story";
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
 const App = () => {
   return (
     <Router>
     <div>
       <Route path="/" exact component={Join} />
+      <Route path="/deck" component={Story} />
       <Route path="/deck" component={Deck} />
     </div>
     </Router>
