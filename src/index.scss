@@ -50,7 +50,6 @@ body{
     width: 2.5px * $placedmult;
     height: 3.5px * $placedmult;
     margin-bottom: 30px;
-    position: relative;
     display: block;
     bottom: -100px;
     left: calc(50% - 2.5px * $placedmult);
@@ -70,7 +69,6 @@ body{
     width: 2.5px * $placedmult;
     height: 3.5px * $placedmult;
     margin-bottom: 30px;
-    position: relative;
     display: block;
     bottom: -100px;
     left: calc(50% - 2.5px * $placedmult);
@@ -97,5 +95,173 @@ body{
     justify-content: space-between;
 }
 .result{
-    padding-top:20%;
+    padding-top:2%;
+}
+.wrap{
+	background: rgb(4, 0, 36);
+	display: flex;
+	flex-flow: row wrap;
+	flex-direction: column;
+	text-align: center;
+}
+.wrap>* {
+	border-radius: 10px;
+}
+.h{
+    display: flex;
+    text-align: center;
+}
+.header{
+	display: flex;
+	margin: 10px;
+    margin-right: 3PX;
+    padding-left: 39%;
+    padding-right: 40.6%;
+	justify-content: space-between;
+	align-items: center;
+	background: rgb(132, 124, 194);
+	border-radius: 10px;
+}
+.header h1{
+	color: white;
+}
+#right-nav{
+	list-style: none;
+}
+#right-nav li{
+	display: inline-block;
+	padding-right: 20px;
+}
+#right-nav a{
+	color: white;
+	text-decoration: none;
+}
+#left-nav{
+	list-style: none;
+}
+#left-nav li{
+	display: inline-block;
+	padding-right: 10px;
+}
+#left-nav a{
+	text-decoration: none;
+}
+.f{
+	display: flex;
+	margin: 0px 10px;
+	padding-right: 63px;
+	min-height: 560px;
+	background: rgb(132, 124, 194);
+	background-image: url(pos.png);
+	background-repeat: no-repeat;
+	background-size:32%;
+    padding-top:5%;
+    padding-bottom: 4%;
+	background-position: left;
+	background-position-y: top;
+	background-position-x: 60px;
+	align-items: center;
+	justify-content: flex-end;
+}
+.box{
+	display: flex;
+	flex-direction: column;
+	width:300px;
+	padding: 30px;
+	margin-bottom: 78px;
+	top: 50%;
+	left: 50%;
+	background: rgb(4, 0, 36);
+	opacity: 87%;
+	border-radius: 50px;
+	text-align: center;
+}
+.box h1{
+	color: white;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+.box input[type="text"],.box input[type = "password"]{
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid rgb(231, 13, 13);
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 30px;
+	transition: 0.3s;
+}
+.box input[type="text"]:focus,.box input[type = "password"]:focus{
+	width: 280px;
+	border-color: rgb(36, 241, 36);
+}
+.box input[type="submit"]{
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid rgb(36, 241, 36);
+	padding: 14px 40px;
+	outline: none;
+	color: white;
+	border-radius: 30px;
+	transition: 0.3s;
+	cursor: pointer;
+}
+.box input[type="submit"]:hover{
+	background: rgb(36, 241, 36);
+}
+.fo{
+	margin: 10px;
+	min-height: 100px;
+	background: rgb(11, 2, 75);
+}
+.fo address{
+	color: white;
+	display: flex;
+	justify-content: flex-end;
+	padding:5px 10px;
+}
+@media (max-width:494px)
+{
+	.box input[type="text"],.box input[type = "password"]{
+		margin: 7px auto;
+		width: 135px;
+	}
+	.box{
+		width:300px;
+		padding: 30px;
+		margin-bottom: 78px;
+	}
+	.box h1{
+		font-size: 30px;
+	}
+	.f{
+		padding-right: 63px;
+		background-image: none;
+	}
+	.box input[type="text"]:focus,.box input[type = "password"]:focus{
+		width: 180px;
+	}
+	#right-nav li{
+		padding-top: 10px;
+	}
+	html,body{
+		font-size: 14px;
+		
+	}
+	.header,.f,.fo{
+		margin: 5px;
+	}
+	.header h1{
+		padding-inline-start: 5px;
+	}
+	#left-nav ul{
+		padding: 0px;
+	}
 }

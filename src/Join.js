@@ -8,19 +8,22 @@ export default function SignIn() {
   const [room, setRoom] = useState('');
 
   return (
-    <div className="joinOuterContainer">
-      <div className="joinInnerContainer">
-        <h1 className="heading">Plannin Poker</h1>
-        <div>
-          <input placeholder="Name" className="joinInput" type="text" onChange={(event) => setName(event.target.value)} />
-        </div>
-        <div>
-          <input placeholder="Room" className="joinInput mt-20" type="text" onChange={(event) => setRoom(event.target.value)} />
-        </div>
-        <Link onClick={e => (!name || !room) ? e.preventDefault() : null} to={`/deck?name=${name}&room=${room}`}>
-          <button className={'button mt-20'} type="submit">Sign In</button>
-        </Link>
-      </div>
-    </div>
+    <div class="wrap">
+		<div class="h">
+<header class="header">
+	<h1>PLANNING POKER</h1>
+</header>
+</div>
+<div class="f">
+<form class="box" action="form.html" method="post">
+	<h1>Login</h1>
+	<input type="text" name="" placeholder="Username" onChange={(event) => setName(event.target.value)}/>
+	<input type="text" name="" placeholder="Room ID" onChange={(event) => setRoom(event.target.value)}/> 
+  <Link onClick={e => (!name || !room) ? e.preventDefault() : null} to={`/deck?name=${name}&room=${room}`}>
+	<input type="submit" name="" value="Enter"/>
+  </Link>
+</form>
+</div>
+</div>
   );
 }

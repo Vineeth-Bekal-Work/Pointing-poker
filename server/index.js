@@ -46,6 +46,13 @@ io.on("connection",function(socket){
         io.in(user.room).emit("selected",data);
         io.in(user.room).emit("preach",roomUser);
     })
+    socket.on("story",function(data){
+        const user = getUser(socket.id);
+        if(user){
+        io.in(user.room).emit("story",data);
+        console.log(data);
+        }
+    })
     socket.on("preach",function(data){
         if(data =='reset'){
             const user = getUser(socket.id);
