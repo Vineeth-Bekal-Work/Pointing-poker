@@ -9,9 +9,9 @@ export default function SignIn() {
   return (
     <div class="wrap">
 		<div class="h">
-<header class="header">
-	<h1>PLANNING POKER</h1>
-</header>
+  <header class="header">
+    <h1>PLANNING POKER</h1>
+  </header>
 </div>
 <div class="f">
 <form class="box" action="form.html" method="post">
