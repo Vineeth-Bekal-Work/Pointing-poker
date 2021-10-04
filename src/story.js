@@ -20,11 +20,10 @@ const Story = (props) => {
 
 
   return (
-            <div className="story" style={{margin: "0px 30%", padding: "0", width: "40%"}}>
-              <h1 style={{backgroundColor: "lightblue", padding: "0", textAlign: "center"}}>Story Description</h1>
-              <form>
-              <textarea
-              style={{backgroundColor: "none", width: "97%", height: "100px", maxHeight: "150px", maxWidth: "97%", marginTop: "20px", padding: "10px"}}
+            <div className="story" >
+              <h1 className="story-dis" >Story Description</h1>
+              <form className="form-story">
+              <textarea className="textArea"
               placeholder="Brief Your Story"
               value={stor}
               onChange={({ target: { value } }) => setStor(value)}

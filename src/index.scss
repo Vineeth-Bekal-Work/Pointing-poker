@@ -5,8 +5,118 @@ $placedmult: 60;
     margin: 0;
 }
 body{
-  overflow:hidden;
+  background-color: rgb(24, 19, 53);
+  margin: 1%;
+  height: 100%;
+//   background-image: url(./wave.svg);
+//   background-repeat: no-repeat;
+//   background-position-x: center;
+//   background-position-y: bottom;
+//   background-size: auto 100%;
 }
+
+//Wave
+  *,
+  *:after,
+  *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: arial;
+    font-size: 16px;
+    margin: 0;
+   
+  }
+
+  svg {
+    width: 100%;
+    // height: 500px;
+  }
+
+  .widths {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 100%;
+    margin-left: 80px;
+  }
+
+  .widthw {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 200px; */
+	width:900px
+  }
+
+  #layer3 {
+    position: absolute;
+    left: -900px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1s;
+  }
+
+  @-webkit-keyframes slide {
+    100% {
+      left: 0;
+    }
+  }
+
+  @keyframes slide {
+    100% {
+      left: 0;
+    }
+  }
+
+  svg g g path {
+    animation: pathAnim 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  svg g g path:nth-child(2) {
+    animation-delay: 1s
+  }
+
+  svg g g path:nth-child(3) {
+    animation-delay: 1s
+  }
+
+  svg g g path:nth-child(4) {
+    animation-play-state: paused;
+  }
+
+  @keyframes pathAnim {
+    0% {
+      d: path("M0,192	C220,100,440,100,660,192 C880,290,1100,290,1320,192	L1320 500 L0 500");
+    }
+
+    25% {
+      d: path("M0,100	C220,100,440,292,660,292 C880,292,1100,100,1320,100	L1320 500 L0 500");
+    }
+
+    50% {
+      d: path("M0,192	C220,290,440,290,660,192 C880,100,1100,100,1320,192	L1320 500 L0 500");
+    }
+
+    75% {
+      d: path("M0,292	C220,292,440,100,660,100 C880,100,1100,292,1320,292	L1320 500 L0 500");
+    }
+
+    100% {
+      d: path("M0,192	C220,100,440,100,660,192 C880,290,1100,290,1320,192	L1320 500 L0 500");
+    }
+
+  }
+
+  ////////
 #hand{
     width: 60%;
     position: absolute;
@@ -90,6 +200,7 @@ body{
     align-items: flex-end;
 }
 .cardplaced{
+	padding: top 6%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -98,17 +209,18 @@ body{
     padding-top:2%;
 }
 .wrap{
-	background: rgb(4, 0, 36);
+	
 	display: flex;
 	flex-flow: row wrap;
 	flex-direction: column;
 	text-align: center;
+	align-self: center;
 }
 .wrap>* {
 	border-radius: 10px;
 }
 .h{
-    display: flex;
+   
     text-align: center;
 }
 .header{
@@ -151,7 +263,7 @@ body{
 	margin: 0px 10px;
 	padding-right: 63px;
 	min-height: 560px;
-	background: rgb(132, 124, 194);
+	background: rgb(132, 124, 194) repeat-y;
 	background-image: url(pos.png);
 	background-repeat: no-repeat;
 	background-size:32%;
@@ -161,6 +273,7 @@ body{
 	background-position-y: top;
 	background-position-x: 60px;
 	align-items: center;
+	
 	justify-content: flex-end;
 }
 .box{
@@ -196,7 +309,7 @@ body{
 	transition: 0.3s;
 }
 .box input[type="text"]:focus,.box input[type = "password"]:focus{
-	width: 280px;
+	width: 240px;
 	border-color: rgb(36, 241, 36);
 }
 .box input[type="submit"]{
@@ -237,12 +350,13 @@ body{
 		width:300px;
 		padding: 30px;
 		margin-bottom: 78px;
+		align-self: center;
 	}
 	.box h1{
 		font-size: 30px;
 	}
 	.f{
-		padding-right: 63px;
+		padding: 0px 20px 0px 10px;
 		background-image: none;
 	}
 	.box input[type="text"]:focus,.box input[type = "password"]:focus{
@@ -264,4 +378,233 @@ body{
 	#left-nav ul{
 		padding: 0px;
 	}
+}
+
+.container-chat{
+	overflow: hidden;
+	background-color: #c8f1c8;
+
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	height: 200px;
+	padding-left: 20px;
+	padding-top: 20px; 
+	width: 300px;
+}
+.send{
+	color: #730cf8;
+	border: 2px solid #730cf8;
+	border-radius: 20%;
+	padding: 10px 20px;
+	display: inline-block;
+	font-family: "Lucida Console", Monaco, monospace;
+	font-size: 18px;
+	width: 100px;
+	margin-bottom: 3%;
+	align-self: center;
+	font-weight: bolder;
+	letter-spacing: 1px;
+	cursor: pointer;
+	box-shadow: inset 0 0 0 0 #730cf8;
+	-webkit-transition: ease-out 0.4s;
+	-moz-transition: ease-out 0.4s;
+	transition: ease-out 0.4s;
+  }
+  .send:hover {
+	  color:#ffffff;
+	box-shadow: inset 0 100px 0 0 #730cf8;
+  }
+
+  .outerContainer {
+	display: flex;
+	width: 95%;
+	height: 300px;
+	justify-content: space-between;
+	margin: 1%;
+	padding-top: 2%;
+	// padding-right: 10%;
+  }
+  
+  .container {
+	display: flex;
+	border: 2px solid rgb(182, 182, 182);
+	flex-direction: column;
+	justify-content: space-between;
+	background: #929dff;
+	border-radius: 8px;
+	height: 200px;
+	width: 200px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }
+  .deck{
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: space-between;
+	  width: 100%;
+	  margin: 20px;
+	  height: auto;
+  }
+  
+ 
+  @media (min-width: 120px) and (max-width: 280px) {
+	.outerContainer {
+	  height: 100%;
+	}
+  
+	.container {
+	  width: 100%;
+	  height: 100%;
+	}
+  }
+  
+  @media (min-width: 180px) and (max-width: 300px) {
+	.container {
+	  width: 60%;
+	}
+  }
+
+  .result{
+	  margin-top: 5%;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+  }
+
+  .outcome{
+	font-size: x-large;
+	color: lightgreen;
+	padding-bottom: 2%;
+  }
+  .cards{
+	  padding-top:8%
+  }
+
+  @media (max-width:768px){
+	  #hand{
+		  top:30%;
+	  }
+	  .result{
+		  margin-top: 2%;
+	  }
+  }
+  @media (max-width:1250px){
+	#hand{
+		top:17%;
+	}
+	.result{
+		margin-top: 0%;
+	}
+}
+@media (max-width:1037px){
+	#hand{
+		top:25%;
+	}
+	.result{
+		margin-top: 2%;
+	}
+}
+@media (max-width:680px){
+	#hand{
+		top:35%;
+	}
+	.result{
+		margin-top: 2%;
+	}
+	
+}
+
+//Story.js
+.story{
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	
+	
+}
+.form-story{
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	margin-top: 5%;
+	border: 1px solid rgb(158, 158, 158);
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+	
+}
+.textArea{
+	height: 10vh;
+	margin-bottom: 5%;
+}
+
+
+@media (max-width:400px){
+	#hand{
+		top:34%;
+		position: none;
+		height: 5px * 50;
+	}
+	.card{
+		width: 2.5px * 50;
+		height: 3.5px * 50;
+		left: calc(50% - 30px * 50);
+	}
+	.placedcard{
+		width: 2.5px * 30;
+		height: 3.5px * 30;
+		margin-bottom: 30px;
+		left: calc(50% - 2.5px * 30);
+	}
+	.backcard{
+		width: 2.5px * 30;
+		height: 3.5px * 30;
+		margin-bottom: 30px;
+		left: calc(50% - 2.5px * 30);
+	}
+	
+	
+	$cardmult: 50;
+$placedmult: 30;
+}
+@media (max-width:550px){
+	.card{
+		position:unset;
+		transform: none !important
+	}
+	.outerContainer{
+		flex-direction: column;
+		height: 150px;
+		margin: 10%;
+	}
+	.container{
+		margin-bottom: 10%;
+		width: 80%;
+	}
+	.story{
+		width: 80%;
+	}
+	#hand{
+		top: 60%;
+		left: 34%;
+	}
+	.cardplaced{
+		flex-direction:column;
+	}
+}
+
+.rightInnerContainer a{
+	text-decoration: none;
+	background-color: rgb(247, 70, 70);
+	border-radius: 10%;
+	color: #ffffff;
+	padding: 2px;
+}
+
+//Story Description
+.story-dis, .form-story{
+padding: 10px;
+background-color: lightblue;
+text-align: center;
+border-radius: 5%;
+color: rgb(3, 39, 9);
+box-shadow: rgba(136, 255, 162, 0.767) 0px -23px 25px 0px inset, rgba(165, 255, 153, 0.801) 0px -36px 30px 0px inset, rgb(68, 155, 155) 0px -79px 40px 0px inset, rgba(139, 190, 184, 0.726) 0px 2px 1px, rgba(135, 152, 207, 0.781) 0px 4px 2px, rgba(114, 145, 192, 0.781) 0px 8px 4px, rrgba(82, 106, 128, 0.801)0px 16px 8px, rgba(139, 184, 184, 0.753) 0px 32px 16px;
 }

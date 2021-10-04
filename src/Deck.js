@@ -188,11 +188,13 @@ socket.on("selected",(data)=>{
 
   return (
     <div className="deck">
-      <Story socket={socket}/>
-      <div className="container" style={{backgroundColor: "#c8f1c8", margin: "0", position: "absolute" ,paddingLeft: "20px", top: "20px", width: "20%"}} >
+      <div className="outerContainer">
+      <div className="container"  >
            <InfoBar room={room} />    
            <Messages messages={messages} name={name}/>
           <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
+      </div>
+      <Story socket={socket}/>
       </div>
       <div id="hand" style={{backgroundColor: "none", marginTop:"11%", padding: "0"}} >
       {/* <div className="container" >
@@ -220,6 +222,7 @@ socket.on("selected",(data)=>{
         )}
         </div>
       </div>
+      
     </div>
   );
 };

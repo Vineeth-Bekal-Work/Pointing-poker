@@ -1,15 +1,10 @@
-const Wave = () =>{
-    return(
-        <svg class="widthw" xmlns="http://www.w3.org/2000/svg" id="svg32" version="1.1" viewBox="0 0 300 307">
-        <g >
-         <g id="svg21" transform="translate(0 108.72727) scale(.1591)" version="1.1" viewBox="0 0 130 100">
-            <path id="path12" fill="#4f7bf5" fill-opacity=".7" d="M0 192c220-92 440-92 660 0 220 98 440 98 660 0v308H0"/>
-            <path id="path15" fill="#04f" fill-opacity=".7" d="M0 192c220-92 440-92 660 0 220 98 440 98 660 0v308H0"/>
-            <path id="path17" fill="#07004b" fill-opacity=".7" d="M0 192c220-92 440-92 660 0 220 98 440 98 660 0v308H0"/>
-            <path id="path19" fill="#08ffff" fill-opacity=".7" d="M0 192c220-92 440-92 660 0 220 98 440 98 660 0v308H0"/>
-          </g>
-        </g>
-      </svg>
-    );
-}
-export default Wave;
+<svg class="widthw" xmlns="http://www.w3.org/2000/svg" id="svg32" version="1.1" viewBox="0 0 300 307">
+  <g>
+    <g id="svg21" transform="translate(0 108.72727) scale(.1591)" version="1.1" viewBox="0 0 130 100">
+      <path id="path12" fill="#4f7bf5" fill-opacity=".7" d="M0 192c220-92 440-92 660 0 220 98 440 98 660 0v308H0" />
+      <path id="path15" fill="#04f" fill-opacity=".7" d="M0 192c220-92 440-92 660 0 220 98 440 98 660 0v308H0" />
+      <path id="path17" fill="#07004b" fill-opacity=".7" d="M0 192c220-92 440-92 660 0 220 98 440 98 660 0v308H0" />
+      <path id="path19" fill="#08ffff" fill-opacity=".7" d="M0 192c220-92 440-92 660 0 220 98 440 98 660 0v308H0" />
+    </g>
+  </g>
+</svg>

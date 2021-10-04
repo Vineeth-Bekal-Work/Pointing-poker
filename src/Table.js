@@ -5,9 +5,11 @@ import Backcard from "./backcard";
 const Table = (props) =>{
     const socket = props.socket;
     const[valuelist,setValuelist]=useState([]);
+    
     useEffect(()=>{
         socket.emit("selected",props.value)
-      },[]);
+      },[props.value, socket]);
+
       useEffect(()=>{
         socket.on("preach",(data)=>{
           if(data !=='reset'){
@@ -16,7 +18,7 @@ const Table = (props) =>{
             console.log(valuelist)
           }
         })
-      },[socket])
+      },[socket, valuelist])
     return(
         <div className="theTable">
           <div className="cardplaced">

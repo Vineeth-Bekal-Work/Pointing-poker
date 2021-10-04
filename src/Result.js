@@ -8,8 +8,8 @@ const Result = (props) => {
     });
     return (
       <div className="result">
-          <p>The result is : {total/count}</p>
-          <button onClick={props.goback}>go back</button>
+          <p className="outcome">The result is : {total/count}</p>
+          <button className="send" onClick={props.goback}>go back</button>
       </div>
     );
   };
